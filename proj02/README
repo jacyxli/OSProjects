@@ -1,0 +1,39 @@
+Name:   Xinan Li(Jacy)
+Class:  CS355 Operating System
+Assignment: hw02
+Due: Feb 20, 2014
+
+-------------------------------------------------
+How to compile:
+    - cd into the right directory for each problem
+        - Problem1
+        - Problem2
+    % make
+    
+    No extra steps need to be done for compilation
+-------------------------------------------------
+How to run it:
+Problem1:
+    % ./hw02
+
+Problem2:
+    % ./mysh
+    
+-------------------------------------------------
+Known Limitations and Error Handling:
+=====
+Problem01
+=====
+This problem declares A, B, C matrix, mutex and the seeds all as global variable. I constructed a 2-D pthread_t thread array and then create new threads by calling pthread_create() for each step. I joined the threads after adding values to A, B matrix, evaluating the multiplication results, and finding the MAX SUM ROW respectively. All newly initiated threads are stored in the pthread_t **tid.
+
+In this problem a created a 2-D unsigned int array for seeds to make sure each seed has different values. I am not sure if this is the best choice. And I am not sure if this could also achieved by having only one unsigned int global variable.
+
+========
+Problem2 - shell
+========
+Error handling and Existing problems
+1. Keyboard interrupt signals are blocked. Therefore when Ctrl+C is pressed, the shell will just show ^C and ignore the signal
+2. when Ctrl+D is entered (EOF as the first symbol), the shell exits
+3. This problem only exists on my linux personal machine: part of command does not work for example when entering ls, it prints a series of unrecognizable symbols. Yet when running the program on Mac, everything works just fine. Could be a machine problem.
+4. History feature is not yet implemented. 
+5. mysh exits when 'exit' is entered

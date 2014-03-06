@@ -1,0 +1,67 @@
+Name:   Xinan Li(Jacy)
+Class:  CS355 Operating System
+Assignment: hw01
+Due: Feb 13, 2014
+
+-------------------------------------------------
+How to compile:
+    - cd into the right directory for each problem
+        - Problem1/hw1a 
+        - Problem1/hw1b
+        - Problem2
+    % make
+    
+    No extra steps need to be done for compilation
+-------------------------------------------------
+How to run it:
+hw1a:
+    % ./hw1a
+hw1b:
+    % ./hw1b
+    ---or---
+    % ./hw1b -s secs
+    EXAMPLE:
+    % ./HW1B -s 5
+
+microcat:
+    % ./microcat [FILES]...
+    --To output(rewrite) to an outfile--
+    % ./microcat [FILES] + [OUTFILE]
+    --To append to an outfile--
+    % ./microcat [FILES] ++ [OUTFILE]
+
+    
+-------------------------------------------------
+Known Limitations and Error Handling:
+=====
+hw1b
+=====
+For problem 01 part b, while parsing the commandline arguments. The program have a integer flag that turns true when reading the '-s' flag and store the input seconds to secs. Thus any invalid input (anything other than an integer) after the '-s' flag will terminate the program, and print Usage.
+EXAMPLE:
+    % ./hw1b -s xxxxxx
+Another thing to note is that, any arguments that comes after the -s flag will be ignored. For example, input such as:
+    % ./hw1b -s 5 youionkjx
+will be considered as a valid input since an integer is entered following the -s flag. The rest of the argument will not be read into the program.
+
+========
+microcat
+========
+In the case of microcat, the programs mimics error handling of cat in UNIX
+1. when a input file is not found under the directory: print FileNotFound message, and resume to the next input file
+2. when nothing is entered after ./microcat: read from stdin
+3. when the output file does not exist in the directory: create a new file with the given name
+4. when the output is input: print error message and resume to the next input file
+5. when a '-' is read, the program automatically reads from stdin. Therefore, if there are multiple '-' in the input, i.e 
+    % ./microcat - - - + outfile
+The user will have to press CTRL+D for 3 times in this case to terminate each read process. Or press CTRL+C to quit the process.
+6. The case where there is an outfile but no input file is inputed, nothing will be written to the outfile (slightly different from cat)
+    % ./microcat + outfile
+7. microcat WILL NOT BE ABLE to handle multiple output, for instance
+    % ./microcat + outfile1 + outfile2
+Since how the program handles the output symbol is by setting a flag. Thus when reading through the argv and encounter the first symbol '+', outfile1 will be opened and the index will be stored as well. All the rest will be considered as input files. Thus in the example above, the program will report error such that the input file '+' is not found.
+
+SIGNAL HANDLING:
+This program register the keyboard interrupt signal to the printMessage() handler. Therefore when CTRL+C is pressed, a message "Help! ...." will be printed before the program terminates.
+-----------------------------------------------------------
+NOTE:
+Extra credit (1), (2) for Problem2 are implemented.
