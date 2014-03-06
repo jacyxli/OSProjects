@@ -17,8 +17,8 @@
 
 typedef struct{
         int id;
-        int direction;
-        int arrivalTime;
+            int direction;
+                int arrivalTime;
 }Baboon;
 
 void getOnRope();

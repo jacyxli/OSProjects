@@ -11,15 +11,16 @@
 #define TRUE 1
 #define FALSE 0
 
-#define NEITHER 2
 #define WEST 0
 #define EAST 1
 
 typedef struct{
         int id;
         int direction;
-        int arrivalTime;
+            int arrivalTime;
 }Baboon;
 
+void* travelWest(void* args);
+void* travelEast(void* args);
 void getOnRope();
-void* travel(void* args);
+

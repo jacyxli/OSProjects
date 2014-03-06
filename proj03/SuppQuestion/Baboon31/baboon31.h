@@ -17,7 +17,7 @@
 typedef struct{
         int id;
         int direction;
-            int arrivalTime;
+        int arrivalTime;
 }Baboon;
 
 void* travelWest(void* args);
